@@ -1,0 +1,38 @@
+<p>
+  <b>Url:</b>
+  <%=h @service.url %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @service.name %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%=h @service.public %>
+</p>
+
+<p>
+  <b>Standard:</b>
+  <%=h @service.standard %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @service.email %>
+</p>
+
+<p>
+  <b>Hits:</b>
+  <%=h @service.hits %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @service.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_service_path(@service) %> |
+<%= link_to 'Back', services_path %>

@@ -1,0 +1,35 @@
+<h1>New service</h1>
+
+<% form_for(@service) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :url %> (The base URL of the TMS service)<br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :name %> (Your name or organization)<br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :public %> (Would you like your TMS to be publicly listed?)<br />
+    <%= f.check_box :public %>
+  </p>
+  <p>
+    <small>If your TMS follows the lower-right origin standard of OSGeo, check the box below. If it follows the upper-right convention of OpenStreetMap, don't check the box.</small><br />
+    <%= f.label :standard %><br />
+    <%= f.check_box :standard %>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', services_path %>

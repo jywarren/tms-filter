@@ -1,0 +1,52 @@
+<html>
+<body>
+
+<style>
+html {  }
+body: { font-family:georgia;width:900px;margin:auto; }
+h1, h2 { font-weight:normal; font-style:italic }
+td { padding: 3px; }
+.grey { background:#ccc; }
+a.button { padding:6px;background:red;color:white;border:3px solid #900 }
+a.button:hover { background:#a00; }
+</style>
+
+<h1>Listing registered TMS services</h1>
+
+<p>
+To use this service to get <b>both</b> a standard, <a href="http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification">OSGeo Tiled Map Service (TMS)</a> and a non-standard, OpenStreetMap TMS, you must register your TMS url. The standard sets the origin at the bottom-left; OpenStreetMap (and tools like JOSM) assume a non-standard upper-left origin.
+</p>
+
+<h2><%= link_to 'New service &raquo;', new_service_path, :class => 'button' %></h2>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Standard TMS</th>
+    <th>Non-Standard TMS</th>
+  </tr>
+
+<% @services.each do |service| %>
+  <tr>
+    <td><%=h service.url %></td>
+    <td><%=h service.name %></td>
+    <td><%=h service.description %></td>
+    <td class='grey'><a href="/tms/<%=h service.id %>/standard">Standard</a></td>
+    <td class='grey'><a href="/tms/<%=h service.id %>/nonstandard">Non-Standard</a></td>
+    <td><%= link_to 'Show', service %></td>
+    <td><%= link_to 'Edit', edit_service_path(service) %></td>
+    <td><%= link_to 'Destroy', service, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<p>
+This is provided as a public service by <a href="http://openmapscaucasus.org">OpenMapsCaucasus</a>. Source available at <a href="http://github.com/jywarren/tms-filter">Github</a>. Contact <a href="mailto:jeff@unterbahn.com">jeff@unterbahn.com</a> with questions.
+</p>
+
+</body>
+</html>

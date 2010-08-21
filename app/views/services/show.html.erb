@@ -1,16 +1,44 @@
-<p>
-  <b>Url:</b>
-  <%=h @service.url %>
-</p>
+<style>
+html {  }
+body: { font-family:georgia;width:900px;margin:auto; }
+h1, h2 { font-weight:normal; font-style:italic }
+table { border:2px solid #ccc; }
+td { padding: 3px; }
+.grey { background:#ccc; }
+a.button { padding:6px;background:red;color:white;border:3px solid #900 }
+a.button:hover { background:#a00; }
+</style>
 
+<% unless @service.public == 1 %>
 <p>
-  <b>Name:</b>
-  <%=h @service.name %>
+You have chosen not to make your TMS public. <b>Save this page's URL</b> or you will not be able to change your decision or edit this entry.
 </p>
+<% end %>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Standard TMS</th>
+    <th>Non-Standard TMS</th>
+  </tr>
+
+  <tr>
+    <td><%=h @service.url %></td>
+    <td><%=h @service.name %></td>
+    <td><%=h @service.description %></td>
+    <td class='grey'><a href="/tms/<%=h @service.id %>/standard">Standard</a></td>
+    <td class='grey'><a href="/tms/<%=h @service.id %>/nonstandard">Non-Standard</a></td>
+    <td><%= link_to 'Show', @service %></td>
+    <td><%= link_to 'Edit', edit_service_path(@service) %></td>
+    <td><%= link_to 'Destroy', @service, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+</table>
 
 <p>
   <b>Public:</b>
-  <%=h @service.public %>
+  <% if @service.public %>true<% else %>false<% end %>
 </p>
 
 <p>
